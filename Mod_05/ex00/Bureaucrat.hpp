@@ -4,28 +4,27 @@
 
 class Bureaucrat
 {
-    private:
-        std::string  name; const
-        int grade;
-    protected:
-    
     public:
         Bureaucrat();
         ~Bureaucrat(); 
-        Bureaucrat(const Bureaucrat& other);
-        Bureaucrat& operator=(const Bureaucrat& other);
+        Bureaucrat(const Bureaucrat&);
+        Bureaucrat& operator=(const Bureaucrat&);
 
-        Bureaucrat(std::string name, int grade);
+        Bureaucrat(std::string, int);
         void incBureau();
         void deBureau();
         
-        std::string getName();
-        void        setName(std::string);
-        std::string getGrade();
-        void        setGrade(std::string);
+        std::string getName() const;
+        int getGrade() const;
+        void setName(std::string);
+        void setGrade(int);
 
-};
+    private:
+        const std::string name; 
+        int grade;
+};;
 
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
 
 /*
 Bureaucrat must have a constant name  and a grade (1-150(lowest)), 

@@ -1,17 +1,21 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(){
+Bureaucrat::Bureaucrat() // Default constructor
+{
 }
 
-Bureaucrat::~Bureaucrat(){
+Bureaucrat::~Bureaucrat() // Default destructor
+{
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other){
-    this->name = other.name;
-    this->grade = other.grade;
+Bureaucrat::Bureaucrat(const Bureaucrat& other) // Copy constructor
+{
+    name = other.name;
+    grade = other.grade;
 }
 
-Bureaucrat::Bureaucrat& operator=(const Bureaucrat& other){
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) // Copy assignment operator
+{
     if (this == &other)
         return *this; 
     this->name = other.name;
@@ -19,27 +23,53 @@ Bureaucrat::Bureaucrat& operator=(const Bureaucrat& other){
     return *this;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade){
+Bureaucrat::Bureaucrat(std::string name, int grade) // Paramatised constructor
+{
     this->name = name;
     this->grade = grade;
 }
 
-Bureaucrat::void incBureau();
-Bureaucrat::void deBureau();
+void Bureaucrat::incBureau() // Grade increase
+{
+    if (grade > 1)
+    grade--;
+    else 
+    std::cout << "Grade maxed out. Congratulations.\n";
+}
 
+void Bureaucrat::deBureau() // Grade decrease
+{
+    if (grade < 150)
+    grade++;
+    else
+    std::cout << "Your grade could not be lower, something has gone terribly wrong.\n";
+}
 
-Bureaucrat::std::string getName(){
+std::string Bureaucrat::getName() const // Name getter
+{
     return name;
 }
 
-Bureaucrat::void setName(std::string new_name){
-    name = new_name;
-}
-
-Bureaucrat::int getGrade(){
+int Bureaucrat::getGrade() const // Grade getter
+{
     return grade;
 }
 
-Bureaucrat::void setGrade(int new_grade){
-    grade = new_grade;
+void Bureaucrat::setName(std::string newName) // Name setter
+{
+    name = newName;
+}
+
+void Bureaucrat::setGrade(int newGrade) // Grade setter
+{
+    if (newGrade < 1 || newGrade > 150)
+        std::cout << "New grade out of range (1-150)\n";
+    else
+        grade = newGrade;
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) // Overload insertion operator
+{
+    os << b.getName() << ", bureaucrat grade " << b.getGrade() << std::endl;
+    return os;
 }
