@@ -1,8 +1,8 @@
-NAME		= Fire
+NAME		= bureaucrat
 CC			= c++
 FLAGS		= -Wall -Werror -Wextra -std=c++11
 
-CFILES 		= 	main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+CFILES 		= 	main.cpp Bureaucrat.cpp
 				
 			  	
 OFILES  	= $(CFILES:.cpp=.o) 
