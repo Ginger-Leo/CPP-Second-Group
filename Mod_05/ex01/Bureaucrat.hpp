@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Exceptions.hpp"
 
 class Bureaucrat
 {
@@ -18,27 +19,10 @@ class Bureaucrat
         std::string getName() const;
         int getGrade() const;
         void setName(std::string);
-        void setGrade(int);
+        void setGrade(int);  
+          
 
-        class GradeTooHighException : public std::exception
-        {
-            public:
-                const char* what() const throw()
-                {
-                    return "Grade is too high!";
-                }
-        };
-
-        class GradeTooLowException : public std::exception
-        {
-            public:
-                const char* what() const throw()
-                {
-                    return "Grade is too low!";
-                }
-        };
-
-        protected: 
+    protected: 
         
     private:
         std::string name; 

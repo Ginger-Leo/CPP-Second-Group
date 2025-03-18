@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Exceptions.hpp"
 
 int main()
 {
@@ -24,11 +25,11 @@ int main()
     {
         Davis.setGrade(162);
     }
-    catch (const Bureaucrat::GradeTooHighException& e)
+    catch (const GradeTooHighException& e)
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
-    catch (const Bureaucrat::GradeTooLowException& e)
+    catch (const GradeTooLowException& e)
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
@@ -37,11 +38,11 @@ int main()
     {
         Bruce.setGrade(5);
     }
-    catch (const Bureaucrat::GradeTooHighException& e)
+    catch (const GradeTooHighException& e)
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
-    catch (const Bureaucrat::GradeTooLowException& e)
+    catch (const GradeTooLowException& e)
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }

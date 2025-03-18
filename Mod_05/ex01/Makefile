@@ -2,7 +2,7 @@ NAME		= maggots
 CC			= c++
 FLAGS		= -Wall -Werror -Wextra -std=c++11
 
-CFILES 		= 	main.cpp Bureaucrat.cpp
+CFILES 		= 	main.cpp Bureaucrat.cpp Exceptions.cpp
 				
 			  	
 OFILES  	= $(CFILES:.cpp=.o) 
