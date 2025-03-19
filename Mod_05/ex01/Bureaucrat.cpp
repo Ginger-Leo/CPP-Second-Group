@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Exceptions.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() // Default constructor
 {
@@ -27,10 +27,10 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) // Copy assignment op
 Bureaucrat::Bureaucrat(std::string name, int grade) // Paramatised constructor
 {
     if (grade < 1)
-    throw GradeTooHighException();
+        throw GradeTooHighException();
 
     else if (grade > 150)
-    throw GradeTooLowException();
+        throw GradeTooLowException();
 
     this->name = name;
     this->grade = grade;
@@ -39,17 +39,27 @@ Bureaucrat::Bureaucrat(std::string name, int grade) // Paramatised constructor
 void Bureaucrat::incBureau() // Grade increase
 {
     if (grade > 1)
-    grade--;
+        grade--;
     else 
-    std::cout << "Grade maxed out. Congratulations.\n";
+        std::cout << "Grade maxed out. Congratulations.\n";
 }
 
 void Bureaucrat::deBureau() // Grade decrease
 {
     if (grade < 150)
-    grade++;
+        grade++;
     else
-    std::cout << "Your grade could not be lower, something has gone terribly wrong.\n";
+        std::cout << "Your grade could not be lower, something has gone terribly wrong.\n";
+}
+
+void Bureaucrat::signForm(Form& form) // Sign form
+{
+    if(grade <= form.getsignGrade() && !form.isAuthorised())
+        form.beSigned(*this);
+    else if (form.isAuthorised())
+        std::cout << "Form already signed.\n";
+    else
+        std::cout << getName() << " couldn't sign form because their Grade was " << getGrade() << " and it must be " << form.getsignGrade() << ".\n";
 }
 
 std::string Bureaucrat::getName() const // Name getter

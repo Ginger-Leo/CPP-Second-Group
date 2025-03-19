@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
-#include "Exceptions.hpp"
+#include "Form.hpp"
 
 int main()
 {
@@ -25,11 +25,11 @@ int main()
     {
         Davis.setGrade(162);
     }
-    catch (const GradeTooHighException& e)
+    catch (const Bureaucrat::GradeTooHighException& e)
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
-    catch (const GradeTooLowException& e)
+    catch (const Bureaucrat::GradeTooLowException& e)
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
@@ -38,11 +38,11 @@ int main()
     {
         Bruce.setGrade(5);
     }
-    catch (const GradeTooHighException& e)
+    catch (const Bureaucrat::GradeTooHighException& e)
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
-    catch (const GradeTooLowException& e)
+    catch (const Bureaucrat::GradeTooLowException& e)
     {
         std::cerr << "Exception caught: " << e.what() << std::endl;
     }
@@ -50,6 +50,21 @@ int main()
     std::cout << Marcus << std::endl;
     std::cout << Davis << std::endl;
     std::cout << Bruce << std::endl;
+
+    std::cout << "\033[1m\033[4mEX01\033[0m\n";
+    std::cout << "Forth test: signing and executing grades\n";
+
+    Form first;
+    Form second("second form");
+
+    std::cout << first << std::endl;
+    std::cout << second << std::endl;
+    Marcus.signForm(first);
+    second.beSigned(Davis);
+    std::cout << first << std::endl;
+    std::cout << second << std::endl;
+
+
 
     return 82;
 }

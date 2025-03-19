@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include "Exceptions.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -20,18 +21,32 @@ class Bureaucrat
         int getGrade() const;
         void setName(std::string);
         void setGrade(int);  
+        void signForm(Form&); 
+
+        class GradeTooLowException : public std::exception
+        {
+            public:
+                const char* what() const throw()
+                {
+                    return "Grade is too low!";
+                }
+        };
+
+        class GradeTooHighException : public std::exception
+        {
+            public:
+                const char* what() const throw()
+                {
+                    return "Grade is too high!";
+                }
+        };
           
 
     protected: 
         
     private:
-        std::string name; 
-        int grade;
+        std::string     name; 
+        int             grade;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
-
-/*
-Bureaucrat must have a constant name  and a grade (1-150(lowest)), 
-use try/catch to get exceptions in grade Bureaucrat::GradeTooHighException or a Bureaucrat::GradeTooLowException.
-*/
