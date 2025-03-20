@@ -19,7 +19,7 @@ class RobotomyRequestForm : public AForm
 	protected:
 
 	private:
-		std::string target;
-		int signGrade = 72;
-		int execGrade = 45;
+		std::string _target;
+		int _signGrade = 72;
+		int _execGrade = 45;
 };

@@ -19,7 +19,7 @@ class ShrubberyCreationForm : public AForm
 	protected:
 
 	private:
-		std::string target;
-		int signGrade = 145;
-		int execGrade = 137;
+		std::string _target;
+		int _signGrade = 145;
+		int _execGrade = 137;
 };

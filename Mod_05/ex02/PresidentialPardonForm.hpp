@@ -19,7 +19,7 @@ class PresidentialPardonForm : public AForm
 	protected:
 
 	private:
-		std::string target;
-		const int 	signGrade = 25;
-		const int 	execGrade = 5;
+		std::string _target;
+		const int 	_signGrade = 25;
+		const int 	_execGrade = 5;
 };;
