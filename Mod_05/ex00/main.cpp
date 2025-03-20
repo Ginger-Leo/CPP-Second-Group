@@ -20,8 +20,32 @@ int main()
     std::cout << Bruce << std::endl;
     
     std::cout << "Third test: Changing grades\n";
-    Davis.setGrade(162);
-    Bruce.setGrade(5);
+    try 
+    {
+        Davis.setGrade(162);
+    }
+    catch (const Bureaucrat::GradeTooHighException& e)
+    {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+    catch (const Bureaucrat::GradeTooLowException& e)
+    {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+
+    try 
+    {
+        Bruce.setGrade(5);
+    }
+    catch (const Bureaucrat::GradeTooHighException& e)
+    {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+    catch (const Bureaucrat::GradeTooLowException& e)
+    {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+    
     std::cout << Marcus << std::endl;
     std::cout << Davis << std::endl;
     std::cout << Bruce << std::endl;

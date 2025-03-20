@@ -1,26 +1,18 @@
 #include "Form.hpp"
 
-Form::Form() // Default constructor
+Form::Form() : _name("Default"), _authorised(false), _signGrade(150), _execGrade(150) // Default constructor
 {
-    _name = "Default";
-    _authorised = false;
-    this->_signGrade = 150;
-    this->_execGrade = 150;
 }
 
-Form::Form(std::string formName) // Paramitised constructor
+Form::Form(std::string formName) : _name(formName), _authorised(false), _signGrade(150), _execGrade(150) // Parametrized constructor
 {
-    _name = formName;
-    _authorised = false;
-    _signGrade = 150;
-    _execGrade = 150;
 }
 
 Form::~Form() // Default destructor
 {
 }
 
-Form::Form(const Form& ref) const // Copy constructor
+Form::Form(const Form& ref) // Copy constructor
 {
     _name = ref._name;
     _authorised = ref._authorised;
@@ -28,7 +20,7 @@ Form::Form(const Form& ref) const // Copy constructor
     _execGrade = ref._execGrade;
 }
 
-Form& Form::operator=(const Form& other) const //copy assignment operator
+Form& Form::operator=(const Form& other) //copy assignment operator
 {
     if (this == &other)
         return *this; 
@@ -87,7 +79,7 @@ int Form::getexecGrade() const
 
 bool Form::isAuthorised() const
 {
-    return this->_authoirised;
+    return this->_authorised;
 }
 
 void Form::beSigned(Bureaucrat& ref)

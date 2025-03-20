@@ -55,4 +55,4 @@ class Form
 
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& b);
+std::ostream& operator<<(std::ostream& os, const Form& b) = delete;
