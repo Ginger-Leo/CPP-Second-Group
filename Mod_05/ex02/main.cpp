@@ -1,6 +1,9 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
@@ -13,6 +16,7 @@ int main()
     std::cout << "first test: constructing with copies\n";
     std::cout << Marcus << std::endl;
     std::cout << Bruce << std::endl;
+    std::cout << Edward << std::endl;
 
     std::cout << "Second test: Changing names\n";
     Bruce.setName("Bruce");
@@ -54,7 +58,7 @@ int main()
     std::cout << "Forth test: signing and executing grades\n";
 
     AForm first;
-    AForm second("second AForm");
+    AForm second("second form");
 
     std::cout << first << std::endl;
     std::cout << second << std::endl;
@@ -63,6 +67,8 @@ int main()
     second.beSigned(Bruce);
     std::cout << first << std::endl;
     std::cout << second << std::endl;
+
+	std::cout << "\033[1m\033[4mEX02\033[0m\n";
 
     return 82;
 }

@@ -1,4 +1,4 @@
-NAME		= maggots
+NAME		= 28b
 CC			= c++
 FLAGS		= -Wall -Werror -Wextra -std=c++11
 

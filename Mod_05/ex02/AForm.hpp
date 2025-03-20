@@ -21,10 +21,10 @@ class AForm
         void setsignGrade(int);
         void setexecGrade(int);
         std::string getName() const;
-        int getsignGrade() const;
-        int getexecGrade() const;
+        virtual int getsignGrade() const;
+        virtual int getexecGrade() const;
         bool isAuthorised() const;
-        void beSigned(Bureaucrat&);
+		virtual void beSigned(Bureaucrat&) = 0;
 
         class GradeTooLowException : public std::exception
         {
@@ -49,8 +49,8 @@ class AForm
     private:
         const std::string   _name;
         bool                _authorised;
-        int           _signGrade;
-        int           _execGrade;
+        int           		_signGrade;
+        int          		_execGrade;
 
 };
 
