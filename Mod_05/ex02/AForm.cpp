@@ -16,16 +16,15 @@ AForm::AForm(const AForm& ref)  : _name (ref._name), _authorised (ref._authorise
 {
 }
 
-//  "DELETED" method
-// AForm& AForm::operator=(const AForm& other) //copy assignment operator
-// {
-//     if (this == &other)
-//         return *this; 
-//     this->_name = other._name;
-//     this->_signGrade = other._signGrade;
-//     this->_execGrade = other._execGrade;
-//     return *this;
-// }
+
+AForm& AForm::operator=(const AForm& other) //copy assignment operator
+{
+    if (this == &other)
+        return *this; 
+    this->_signGrade = other._signGrade;
+    this->_execGrade = other._execGrade;
+    return *this;
+}
 
 //Getters & Setters
 void AForm::setAuthorised(bool button)
@@ -56,7 +55,7 @@ void AForm::setexecGrade(int newGrade)
 
 std::string AForm::getName() const
 {
-    return this->_name;
+    return _name;
 }
 
 int AForm::getsignGrade() const
@@ -88,8 +87,7 @@ void AForm::beSigned(Bureaucrat& ref)
 
 std::ostream& operator<<(std::ostream& os, const AForm& b)
 {
-    os << "AForm               : " << b.getName() << std::endl
-       << "Authorised         : " << b.isAuthorised() << std::endl
+    os << "Authorised         : " << b.isAuthorised() << std::endl
        << "Sign grade         : " << b.getsignGrade() << std::endl
        << "Execute Grade level: " << b.getexecGrade() << std::endl;
     return os;

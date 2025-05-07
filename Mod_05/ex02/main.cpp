@@ -13,20 +13,33 @@ int main()
     Bureaucrat Edward("Ed", 150);
 
 
-    std::cout << "first test: constructing with copies\n";
+    std::cout << "\nfirst test: constructing with copies\n";
     std::cout << Marcus << std::endl;
     std::cout << Bruce << std::endl;
     std::cout << Edward << std::endl;
 
-    std::cout << "Second test: Changing names\n";
+    std::cout << "\nSecond test: Changing names\n";
     Bruce.setName("Bruce");
     std::cout << Marcus << std::endl;
     std::cout << Bruce << std::endl;
     
-    std::cout << "Third test: Changing grades\n";
+    std::cout << "\nThird test: Changing grades\n";
     try 
     {
         Marcus.setGrade(162);
+    }
+    catch (const Bureaucrat::GradeTooHighException& e)
+    {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+    catch (const Bureaucrat::GradeTooLowException& e)
+    {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+
+    try 
+    {
+        Marcus.setGrade(150);
     }
     catch (const Bureaucrat::GradeTooHighException& e)
     {
@@ -51,24 +64,53 @@ int main()
     }
     
     std::cout << Marcus << std::endl;
-    // std::cout << Davis << std::endl;
     std::cout << Bruce << std::endl;
 
-    std::cout << "\033[1m\033[4mEX01\033[0m\n";
-    std::cout << "Forth test: signing and executing grades\n";
-
-    AForm first;
-    AForm second("second form");
-
-    std::cout << first << std::endl;
-    std::cout << second << std::endl;
-	first.setsignGrade(50);
-    Edward.signAForm(first);
-    second.beSigned(Bruce);
-    std::cout << first << std::endl;
-    std::cout << second << std::endl;
-
+    
 	std::cout << "\033[1m\033[4mEX02\033[0m\n";
+    std::cout << "\nForth test: creating new forms\n";
+    std::cout << "\n\n-----HERE----\n\n";
+    ShrubberyCreationForm shrubberyForm("home");
+    RobotomyRequestForm robotform("Bruce");
+    std::cout << shrubberyForm << std::endl;
+    
+    std::cout << "\nFifth test: signing and executing grades\n";
+    std::cout << "Formname: "<< shrubberyForm.getTarget() << std::endl << "Form sign grade: " << shrubberyForm.getsignGrade() << std::endl << "Form exec grade: " << shrubberyForm.getexecGrade() <<std::endl;
+    try
+    {
+        robotform.beSigned(Bruce);
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Exception caught while signing the form: " << e.what() << std::endl;
+    }
 
-    return 82;
+    std::cout << "\nSixth test: executing Robotomy form 10 times\n";
+    
+    for (int i = 0; i < 10; i++)
+        robotform.execute(Bruce);
+
+    std::cout << "\nSeventh test: Presidential pardon form\n";
+    PresidentialPardonForm PForm("Rick");
+
+    try
+    {
+        PForm.beSigned(Marcus);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        PForm.beSigned(Bruce);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    PForm.execute(Bruce);
+
+    return 0;
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -12,7 +14,7 @@ class AForm
         AForm();
         ~AForm();
         AForm(const AForm&);
-        AForm& operator=(const AForm&) = delete;
+        AForm& operator=(const AForm&);
 
         AForm(std::string);
 
@@ -20,7 +22,7 @@ class AForm
         void setAuthorised(bool);
         void setsignGrade(int);
         void setexecGrade(int);
-        std::string getName() const;
+        virtual std::string getName() const;
         virtual int getsignGrade() const;
         virtual int getexecGrade() const;
         bool isAuthorised() const;
