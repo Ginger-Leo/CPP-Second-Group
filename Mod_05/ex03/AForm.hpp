@@ -12,7 +12,7 @@ class AForm
     public:
         //OCF
         AForm();
-        ~AForm();
+        virtual ~AForm();
         AForm(const AForm&);
         AForm& operator=(const AForm&);
 
@@ -27,6 +27,7 @@ class AForm
         virtual int getexecGrade() const;
         bool isAuthorised() const;
 		virtual void beSigned(Bureaucrat&) = 0;
+        virtual void execute(const Bureaucrat& executor) const = 0;
 
         class GradeTooLowException : public std::exception
         {

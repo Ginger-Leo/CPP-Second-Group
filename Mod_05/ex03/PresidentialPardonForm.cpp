@@ -52,7 +52,7 @@ void PresidentialPardonForm::beSigned(Bureaucrat& ref)
         throw GradeTooLowException();
 }
 
-void PresidentialPardonForm::execute(const Bureaucrat& ref)
+void PresidentialPardonForm::execute(const Bureaucrat& ref) const
 {
 	if (ref.getGrade() > this->getexecGrade())
 		throw GradeTooLowException();

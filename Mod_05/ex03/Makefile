@@ -1,4 +1,4 @@
-NAME		= moreforms
+NAME		= intern
 CC			= c++
 FLAGS		= -Wall -Werror -Wextra -std=c++11
 
@@ -7,7 +7,8 @@ CFILES 		=	main.cpp \
 				AForm.cpp \
                 ShrubberyCreationForm.cpp \
 				RobotomyRequestForm.cpp \
-                PresidentialPardonForm.cpp
+                PresidentialPardonForm.cpp \
+				Intern.cpp
                 
 OFILES  	= $(CFILES:.cpp=.o) 
 

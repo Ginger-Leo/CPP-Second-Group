@@ -18,7 +18,7 @@ class PresidentialPardonForm : public AForm
 		std::string getName() const override;
 		std::string getType() const;
 		
-		void execute(const Bureaucrat&);
+		void execute(const Bureaucrat&)const override;
 		void beSigned(Bureaucrat&) override;
 
 	protected:

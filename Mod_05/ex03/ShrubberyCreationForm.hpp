@@ -18,6 +18,7 @@ class ShrubberyCreationForm : public AForm
 		std::string getType() const;
 		std::string getTarget() const;
 		std::string getName() const override;
+		void execute(const Bureaucrat&) const override;
 
 		void setAuthorised(bool);
 		bool isAuthorised() const;

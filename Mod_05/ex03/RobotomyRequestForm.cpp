@@ -35,7 +35,7 @@ std::string RobotomyRequestForm::getName() const
 	return _name;
 }
 
-void RobotomyRequestForm::execute(const Bureaucrat& executor)
+void RobotomyRequestForm::execute(const Bureaucrat& executor) const
 {
 	if (!this->isAuthorised())
 		std::cout << "Robotomy form not authorised\n";
