@@ -21,8 +21,8 @@ class ScalarConverter
     public:
     ScalarConverter();
     ~ScalarConverter();
-    ScalarConverter(const ScalarConverter&);
-    ScalarConverter& operator=(const ScalarConverter&);
+    ScalarConverter(const ScalarConverter&) = delete;
+    ScalarConverter& operator=(const ScalarConverter&) = delete;
     
     static void convert(std::string);
 };

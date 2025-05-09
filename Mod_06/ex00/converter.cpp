@@ -1,5 +1,14 @@
 #include "converter.hpp"
 
+ScalarConverter::ScalarConverter()
+{
+}
+
+ScalarConverter::~ScalarConverter()
+{
+}
+
+
 void ScalarConverter::convert(std::string target)
 {
     if (target.empty())
