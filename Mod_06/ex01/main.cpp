@@ -11,6 +11,12 @@ int main()
     std::cout << "Original value: " << data.value << std::endl;
     std::cout << "Deserialized value: " << ptr->value << std::endl;
 
+    if (&data == ptr) 
+        std::cout << "\nPointer deserialization successful. Have a wonderful day.\n"; 
+    else 
+        std::cout << "\nDeserialization failed!\n\nToday has been a total waste. Go home, drink a glass of wine, go to bed.\n";
+    
+    
     return 0;
 }
 
